@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Valentine 💖</title>
+
+  <style>
+    body {
+      background: #ece5dd;
+      font-family: Arial, sans-serif;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .chat {
+      background: white;
+      width: 360px;
+      padding: 15px;
+      border-radius: 12px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.3);
+      position: relative;
+      z-index: 2;
+    }
+
+    .msg {
+      background: #dcf8c6;
+      padding: 10px;
+      border-radius: 8px;
+      margin-bottom: 15px;
+      max-width: 90%;
+      font-size: 15px;
+    }
+
+    .buttons {
+      text-align: center;
+      position: relative;
+      height: 80px;
+    }
+
+    #yesBtn {
+      font-size: 18px;
+      padding: 12px 30px;
+      background: #25d366;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    #noBtn {
+      font-size: 11px;
+      padding: 5px 10px;
+      position: absolute;
+      cursor: pointer;
+    }
+
+    #loveSection {
+      display: none;
+      text-align: center;
+    }
+
+    video {
+      width: 100%;
+      margin-top: 10px;
+      border-radius: 10px;
+    }
+
+    .heart {
+      position: absolute;
+      bottom: 0;
+      font-size: 20px;
+      animation: float 6s linear infinite;
+      opacity: 0.7;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0); opacity: 1; }
+      100% { transform: translateY(-100vh); opacity: 0; }
+    }
+  </style>
+</head>
+
+<body>
+
+<audio id="music" loop>
+  <source src="song.mp3" type="audio/mpeg">
+</audio>
+
+<div class="chat">
+  <div class="msg">
+    WILL YOU BE MY VALENTINE VALLARY? 💖
+  </div>
+
+  <div class="buttons" id="choice">
+    <button id="yesBtn" onclick="yesClicked()">YES 💘</button>
+    <button id="noBtn" onmouseover="runAway()">no</button>
+  </div>
+
+  <div id="loveSection">
+    <div class="msg">
+      Yaaay 😍💖<br>
+      I knew it!<br>
+      You just made my heart smile ❤️<br>
+      Happy Valentine honeybun 💕
+    </div>
+
+    <video controls playsinline>
+      <source src="capcut.mp4" type="video/mp4">
+    </video>
+  </div>
+</div>
+
+<script>
+  let yesSize = 18;
+
+  function runAway() {
+    const noBtn = document.getElementById("noBtn");
+    noBtn.style.left = Math.random() * 220 + "px";
+    noBtn.style.top = Math.random() * 50 + "px";
+  }
+
+  function yesClicked() {
+    document.getElementById("choice").style.display = "none";
+    document.getElementById("loveSection").style.display = "block";
+    document.getElementById("music").play();
+    startHearts();
+  }
+
+  function startHearts() {
+    setInterval(() => {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.innerHTML = "💖";
+      heart.style.left = Math.random() * window.innerWidth + "px";
+      heart.style.fontSize = (Math.random() * 20 + 15) + "px";
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 6000);
+    }, 400);
+  }
+</script>
+
+</body>
+</html>
